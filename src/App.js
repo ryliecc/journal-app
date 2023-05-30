@@ -1,25 +1,52 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import Badge from "./components/Badge";
+import Button from "./components/Button";
+import EntriesSection from "./components/EntriesSection";
+import Entry from "./components/Entry";
+import EntryForm from "./components/EntryForm";
+import EntryList from "./components/EntryList";
+import Footer from "./components/Footer";
+import Header from "./components/Header";
+import IconButton from "./components/IconButton";
+import Input from "./components/Input";
+import Main from "./components/Main";
+import Tab from "./components/Tab";
+import TabBar from "./components/TabBar";
+import Textarea from "./components/Textarea";
 
-function App() {
+export default function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Header />
+      <Main>
+        <EntryForm>
+          <Input />
+          <Textarea />
+          <Button type="submit" text="Submit" />
+        </EntryForm>
+        <EntriesSection>
+          <TabBar>
+            <Tab text="All Entries">
+              <Badge />
+            </Tab>
+            <Tab text="Favorites">
+              <Badge />
+            </Tab>
+          </TabBar>
+          <EntryList>
+            <Entry date="" title="" text="">
+              <IconButton />
+            </Entry>
+            <Entry date="" title="" text="">
+              <IconButton />
+            </Entry>
+            <Entry date="" title="" text="">
+              <IconButton />
+            </Entry>
+          </EntryList>
+        </EntriesSection>
+      </Main>
+      <Footer />
+    </>
   );
 }
-
-export default App;
