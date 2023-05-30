@@ -1,3 +1,3 @@
-export default function EntriesSection() {
-  return <section></section>;
+export default function EntriesSection({ children }) {
+  return <section>{children}</section>;
 }

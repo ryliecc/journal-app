@@ -17,12 +17,12 @@ import Textarea from "./components/Textarea";
 export default function App() {
   return (
     <>
-      <Header />
+      <Header title="Journal" />
       <Main>
-        <EntryForm>
-          <Input />
-          <Textarea />
-          <Button type="submit" text="Submit" />
+        <EntryForm title="New Entry">
+          <Input id="entry-form__motto" labelText="Motto" type="text" />
+          <Textarea id="entry-form__notes" labelText="Notes" rowNumber="3" />
+          <Button type="submit" text="Create" />
         </EntryForm>
         <EntriesSection>
           <TabBar>
