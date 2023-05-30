@@ -13,6 +13,7 @@ import Main from "./components/Main";
 import Tab from "./components/Tab";
 import TabBar from "./components/TabBar";
 import Textarea from "./components/Textarea";
+import StarSVG from "./components/StarSVG";
 
 export default function App() {
   return (
@@ -27,26 +28,44 @@ export default function App() {
         <EntriesSection>
           <TabBar>
             <Tab text="All Entries">
-              <Badge />
+              <Badge numberOfEntries="3" />
             </Tab>
             <Tab text="Favorites">
-              <Badge />
+              <Badge numberOfEntries="1" />
             </Tab>
           </TabBar>
           <EntryList>
-            <Entry date="" title="" text="">
-              <IconButton />
+            <Entry
+              date="Feb 27, 2028"
+              title="That's life in the city"
+              text="Aenean posuere elit mollis nibh maximus, in dictum nibh ultrices. Sed tincidunt sem orci, sed facilisis leo fringilla ac. Vivamus nec blandit tellus. Duis id mi ligula. Vivamus urna leo, congue non justo eget, iaculis mollis libero."
+            >
+              <IconButton>
+                <StarSVG isFilled={true} />
+              </IconButton>
             </Entry>
-            <Entry date="" title="" text="">
-              <IconButton />
+            <Entry
+              date="Feb 27, 2028"
+              title="That's life in the city"
+              text="Aenean posuere elit mollis nibh maximus, in dictum nibh ultrices. Sed tincidunt sem orci, sed facilisis leo fringilla ac. Vivamus nec blandit tellus. Duis id mi ligula. Vivamus urna leo, congue non justo eget, iaculis mollis libero."
+            >
+              <IconButton>
+                <StarSVG isFilled={false} />
+              </IconButton>
             </Entry>
-            <Entry date="" title="" text="">
-              <IconButton />
+            <Entry
+              date="Feb 27, 2028"
+              title="That's life in the city"
+              text="Aenean posuere elit mollis nibh maximus, in dictum nibh ultrices. Sed tincidunt sem orci, sed facilisis leo fringilla ac. Vivamus nec blandit tellus. Duis id mi ligula. Vivamus urna leo, congue non justo eget, iaculis mollis libero."
+            >
+              <IconButton>
+                <StarSVG isFilled={false} />
+              </IconButton>
             </Entry>
           </EntryList>
         </EntriesSection>
       </Main>
-      <Footer />
+      <Footer text="Journal App - 2023" />
     </>
   );
 }

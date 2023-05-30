@@ -1,3 +1,3 @@
-export default function IconButton() {
-  return <button type="button"></button>;
+export default function IconButton({ children }) {
+  return <button type="button">{children}</button>;
 }

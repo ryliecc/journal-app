@@ -3,7 +3,7 @@ export default function Entry({ date, title, text, children }) {
     <li>
       <h2>{date}</h2>
       <h3>
-        <span>{title}</span>
+        <span>"{title}"</span>
         {children}
       </h3>
       <p>{text}</p>
