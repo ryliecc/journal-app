@@ -16,7 +16,7 @@ export default function App() {
         <EntryForm>
           <Input />
           <Textarea />
-          <Button type="submit" />
+          <Button type="submit" text="Submit" />
         </EntryForm>
         <EntriesSection />
       </Main>
