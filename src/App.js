@@ -2,10 +2,12 @@ import "./App.css";
 import Badge from "./components/Badge";
 import Button from "./components/Button";
 import EntriesSection from "./components/EntriesSection";
+import Entry from "./components/Entry";
 import EntryForm from "./components/EntryForm";
 import EntryList from "./components/EntryList";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
+import IconButton from "./components/IconButton";
 import Input from "./components/Input";
 import Main from "./components/Main";
 import Tab from "./components/Tab";
@@ -31,7 +33,17 @@ export default function App() {
               <Badge />
             </Tab>
           </TabBar>
-          <EntryList />
+          <EntryList>
+            <Entry date="" title="" text="">
+              <IconButton />
+            </Entry>
+            <Entry date="" title="" text="">
+              <IconButton />
+            </Entry>
+            <Entry date="" title="" text="">
+              <IconButton />
+            </Entry>
+          </EntryList>
         </EntriesSection>
       </Main>
       <Footer />
