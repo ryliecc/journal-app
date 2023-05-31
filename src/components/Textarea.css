@@ -1,0 +1,11 @@
+.entry-form__textarea-label {
+  align-self: baseline;
+  font-weight: bold;
+}
+
+.entry-form__textarea {
+  align-self: stretch;
+  border: var(--color-granite) solid thin;
+  border-radius: 10px;
+  padding: 0.5em;
+}
