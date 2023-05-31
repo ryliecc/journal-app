@@ -1,3 +1,3 @@
-export default function EntryList() {
-  return <ul></ul>;
+export default function EntryList({ children }) {
+  return <ul>{children}</ul>;
 }

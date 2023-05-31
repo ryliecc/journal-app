@@ -1,3 +1,3 @@
-export default function TabBar() {
-  return <div></div>;
+export default function TabBar({ children }) {
+  return <div>{children}</div>;
 }
