@@ -13,6 +13,10 @@
   --color-water-10: #e4e8f0;
 }
 
+* {
+  background-color: var(--color-foam);
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",

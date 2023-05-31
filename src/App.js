@@ -1,3 +1,4 @@
+import "./index.css";
 import Badge from "./components/Badge";
 import Button from "./components/Button";
 import EntriesSection from "./components/EntriesSection";
