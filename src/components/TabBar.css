@@ -1,0 +1,4 @@
+.entries-section__tab-bar {
+  display: flex;
+  justify-content: space-between;
+}

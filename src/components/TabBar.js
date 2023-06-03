@@ -1,3 +1,3 @@
 export default function TabBar({ children }) {
-  return <div>{children}</div>;
+  return <div className="entries-section__tab-bar">{children}</div>;
 }

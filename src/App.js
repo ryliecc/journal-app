@@ -27,10 +27,10 @@ export default function App() {
         <EntriesSection>
           <TabBar>
             <Tab text="All Entries">
-              <Badge numberOfEntries="3" />
+              <Badge isActive="true" numberOfEntries="3" />
             </Tab>
             <Tab text="Favorites">
-              <Badge numberOfEntries="1" />
+              <Badge isActive="false" numberOfEntries="1" />
             </Tab>
           </TabBar>
           <EntryList>

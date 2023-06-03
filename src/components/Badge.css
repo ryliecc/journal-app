@@ -1,0 +1,12 @@
+.entries-section__badge {
+  border: solid var(--color-water-10);
+  border-radius: 10px;
+  background-color: var(--color-water-10);
+  color: var(--color-granite);
+  margin: 0.5em;
+  border-width: 0.5em;
+}
+
+.entries-section__badge--active {
+  background-color: var(--color-nemo-mid);
+}
