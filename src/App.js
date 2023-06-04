@@ -1,20 +1,55 @@
+import { useState } from "react";
 import Badge from "./components/Badge";
 import Button from "./components/Button";
 import EntriesSection from "./components/EntriesSection";
-import Entry from "./components/Entry";
 import EntryForm from "./components/EntryForm";
 import EntryList from "./components/EntryList";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
-import IconButton from "./components/IconButton";
+import FavoriteButton from "./components/FavoriteButton";
 import Input from "./components/Input";
 import Main from "./components/Main";
 import Tab from "./components/Tab";
 import TabBar from "./components/TabBar";
 import Textarea from "./components/Textarea";
-import StarSVG from "./components/StarSVG";
 
 export default function App() {
+  const [isFavorite, setFavorite] = useState(false);
+
+  const entries = [
+    {
+      id: 1000,
+      date: "Feb 5, 2025",
+      motto: "We are in a state of chaos",
+      notes:
+        "Today I learned about React State. It was fun! I can't wait to learn more.",
+    },
+    {
+      id: 999,
+      date: "Feb 4, 2025",
+      motto: "Props, Props, Props",
+      notes:
+        "Today I learned about React Props. Mad props to everyone who understands this!",
+    },
+    {
+      id: 998,
+      date: "Feb 3, 2025",
+      motto: "How to nest components online fast",
+      notes:
+        "Today I learned about React Components and how to nest them like a pro. Application design is so much fun!",
+    },
+    {
+      id: 997,
+      date: "Feb 2, 2025",
+      motto: "I'm a React Developer",
+      notes: "My React-ion when I learned about React: 😍",
+    },
+  ];
+
+  function handleFavorite() {
+    setFavorite(!isFavorite);
+  }
+
   return (
     <>
       <Header title="Journal" />
@@ -33,34 +68,8 @@ export default function App() {
               <Badge isActive="false" numberOfEntries="1" />
             </Tab>
           </TabBar>
-          <EntryList>
-            <Entry
-              date="Feb 27, 2028"
-              title="That's life in the city"
-              text="Aenean posuere elit mollis nibh maximus, in dictum nibh ultrices. Sed tincidunt sem orci, sed facilisis leo fringilla ac. Vivamus nec blandit tellus. Duis id mi ligula. Vivamus urna leo, congue non justo eget, iaculis mollis libero."
-            >
-              <IconButton>
-                <StarSVG isFilled={true} />
-              </IconButton>
-            </Entry>
-            <Entry
-              date="Feb 27, 2028"
-              title="That's life in the city"
-              text="Aenean posuere elit mollis nibh maximus, in dictum nibh ultrices. Sed tincidunt sem orci, sed facilisis leo fringilla ac. Vivamus nec blandit tellus. Duis id mi ligula. Vivamus urna leo, congue non justo eget, iaculis mollis libero."
-            >
-              <IconButton>
-                <StarSVG isFilled={false} />
-              </IconButton>
-            </Entry>
-            <Entry
-              date="Feb 27, 2028"
-              title="That's life in the city"
-              text="Aenean posuere elit mollis nibh maximus, in dictum nibh ultrices. Sed tincidunt sem orci, sed facilisis leo fringilla ac. Vivamus nec blandit tellus. Duis id mi ligula. Vivamus urna leo, congue non justo eget, iaculis mollis libero."
-            >
-              <IconButton>
-                <StarSVG isFilled={false} />
-              </IconButton>
-            </Entry>
+          <EntryList entries={entries}>
+            <FavoriteButton onClick={handleFavorite} isFavorite={isFavorite} />
           </EntryList>
         </EntriesSection>
       </Main>
