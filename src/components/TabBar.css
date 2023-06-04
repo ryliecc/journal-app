@@ -16,6 +16,15 @@
   border-radius: 10px;
   background-color: var(--color-water-10);
   color: var(--color-granite);
-  margin: 0.5em;
   border-width: 0.5em;
+  margin: 0.4em;
+}
+
+.tab__badge--active {
+  color: var(--color-granite);
+  background-color: var(--color-nemo-mid);
+  border: solid var(--color-nemo-mid);
+  border-radius: 10px;
+  border-width: 0.5em;
+  margin: 0.4em;
 }

@@ -106,6 +106,7 @@ export default function App() {
             onShowAllEntries={showAllEntries}
             numberOfFavoriteEntries={favoriteEntries.length}
             onShowFavoriteEntries={showFavoriteEntries}
+            filter={filter}
           />
           <EntryList
             entries={showUpdatedEntries()}
