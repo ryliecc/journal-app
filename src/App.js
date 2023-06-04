@@ -6,15 +6,13 @@ import EntryForm from "./components/EntryForm";
 import EntryList from "./components/EntryList";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
-import FavoriteButton from "./components/FavoriteButton";
 import Input from "./components/Input";
 import Main from "./components/Main";
 import TabBar from "./components/TabBar";
 import Textarea from "./components/Textarea";
-import Entry from "./components/Entry";
 
 export default function App() {
-  const [entries, setEntries] = useState([
+  const initialEntries = [
     {
       id: 1000,
       date: "May 31, 2023",
@@ -46,8 +44,9 @@ export default function App() {
       notes: "My React-ion when I learned about React: 😍",
       isFavorite: false,
     },
-  ]);
-
+  ];
+  const [filter, setFilter] = useState(initialEntries);
+  const [entries, setEntries] = useState(initialEntries);
   const favoriteEntries = entries.filter((entry) => entry.isFavorite === true);
 
   function handleAddEntry(event) {
@@ -63,6 +62,14 @@ export default function App() {
     setEntries([newEntry, ...entries]);
     form.reset();
     form.motto.focus();
+  }
+
+  function showAllEntries() {
+    setFilter(entries);
+  }
+
+  function showFavoriteEntries() {
+    setFilter(favoriteEntries);
   }
 
   function handleToggleFavorite(favEntryId) {
@@ -88,26 +95,11 @@ export default function App() {
         <EntriesSection>
           <TabBar
             numberOfAllEntries={entries.length}
+            onShowAllEntries={showAllEntries}
             numberOfFavoriteEntries={favoriteEntries.length}
+            onShowFavoriteEntries={showFavoriteEntries}
           />
-          <EntryList>
-            {entries.map((entry) => {
-              return (
-                <Entry
-                  id={entry.id}
-                  date={entry.date}
-                  motto={entry.motto}
-                  notes={entry.notes}
-                >
-                  <FavoriteButton
-                    onClick={handleToggleFavorite}
-                    isFavorite={entry.isFavorite}
-                    entryId={entry.id}
-                  />
-                </Entry>
-              );
-            })}
-          </EntryList>
+          <EntryList entries={filter} onToggleFavorite={handleToggleFavorite} />
         </EntriesSection>
       </Main>
       <Footer text="Journal App - 2023" />

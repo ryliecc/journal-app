@@ -27,3 +27,9 @@
 .entry-text {
   grid-area: d;
 }
+
+.entry-favorite-button {
+  grid-area: c;
+  justify-self: end;
+  border: none;
+}
