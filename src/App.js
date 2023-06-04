@@ -45,9 +45,11 @@ export default function App() {
       isFavorite: false,
     },
   ];
-  const [filter, setFilter] = useState(initialEntries);
-  const [entries, setEntries] = useState(initialEntries);
-  const favoriteEntries = entries.filter((entry) => entry.isFavorite === true);
+  const [filter, setFilter] = useState("all");
+  const [allEntries, setAllEntries] = useState(initialEntries);
+  const favoriteEntries = allEntries.filter(
+    (entry) => entry.isFavorite === true
+  );
 
   function handleAddEntry(event) {
     event.preventDefault();
@@ -59,28 +61,34 @@ export default function App() {
       notes: form.elements.notes.value,
       isFavorite: false,
     };
-    setEntries([newEntry, ...entries]);
+    setAllEntries([newEntry, ...allEntries]);
     form.reset();
     form.motto.focus();
   }
 
   function showAllEntries() {
-    setFilter(entries);
+    setFilter("all");
   }
 
   function showFavoriteEntries() {
-    setFilter(favoriteEntries);
+    setFilter("favorite");
+  }
+
+  function showUpdatedEntries() {
+    if (filter === "favorite") {
+      return favoriteEntries;
+    }
+    return allEntries;
   }
 
   function handleToggleFavorite(favEntryId) {
-    const updatedEntries = entries.map((entry) => {
+    const updatedEntries = allEntries.map((entry) => {
       if (entry.id === favEntryId) {
         return { ...entry, isFavorite: !entry.isFavorite };
       }
       return entry;
     });
-    console.log("Updated entries:", updatedEntries);
-    setEntries(updatedEntries);
+    setAllEntries(updatedEntries);
   }
 
   return (
@@ -94,12 +102,15 @@ export default function App() {
         </EntryForm>
         <EntriesSection>
           <TabBar
-            numberOfAllEntries={entries.length}
+            numberOfAllEntries={allEntries.length}
             onShowAllEntries={showAllEntries}
             numberOfFavoriteEntries={favoriteEntries.length}
             onShowFavoriteEntries={showFavoriteEntries}
           />
-          <EntryList entries={filter} onToggleFavorite={handleToggleFavorite} />
+          <EntryList
+            entries={showUpdatedEntries()}
+            onToggleFavorite={handleToggleFavorite}
+          />
         </EntriesSection>
       </Main>
       <Footer text="Journal App - 2023" />
