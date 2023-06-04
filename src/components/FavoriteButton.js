@@ -1,6 +1,10 @@
-export default function FavoriteButton({ isFavorite, onClick }) {
+export default function FavoriteButton({ isFavorite, onClick, entryId }) {
   return (
-    <button type="button" className="entry-favorite-button" onClick={onClick}>
+    <button
+      type="button"
+      className="entry-favorite-button"
+      onClick={() => onClick(entryId)}
+    >
       <svg
         width="24"
         height="24"
