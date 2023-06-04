@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { uid } from "uid";
-import Badge from "./components/Badge";
 import Button from "./components/Button";
 import EntriesSection from "./components/EntriesSection";
 import EntryForm from "./components/EntryForm";
@@ -10,7 +9,6 @@ import Header from "./components/Header";
 import FavoriteButton from "./components/FavoriteButton";
 import Input from "./components/Input";
 import Main from "./components/Main";
-import Tab from "./components/Tab";
 import TabBar from "./components/TabBar";
 import Textarea from "./components/Textarea";
 import Entry from "./components/Entry";
@@ -19,7 +17,7 @@ export default function App() {
   const [entries, setEntries] = useState([
     {
       id: 1000,
-      date: "Feb 5, 2025",
+      date: "May 31, 2023",
       motto: "We are in a state of chaos",
       notes:
         "Today I learned about React State. It was fun! I can't wait to learn more.",
@@ -27,7 +25,7 @@ export default function App() {
     },
     {
       id: 999,
-      date: "Feb 4, 2025",
+      date: "May 30, 2023",
       motto: "Props, Props, Props",
       notes:
         "Today I learned about React Props. Mad props to everyone who understands this!",
@@ -35,7 +33,7 @@ export default function App() {
     },
     {
       id: 998,
-      date: "Feb 3, 2025",
+      date: "May 26, 2023",
       motto: "How to nest components online fast",
       notes:
         "Today I learned about React Components and how to nest them like a pro. Application design is so much fun!",
@@ -43,12 +41,14 @@ export default function App() {
     },
     {
       id: 997,
-      date: "Feb 2, 2025",
+      date: "May 25, 2023",
       motto: "I'm a React Developer",
       notes: "My React-ion when I learned about React: 😍",
       isFavorite: false,
     },
   ]);
+
+  const favoriteEntries = entries.filter((entry) => entry.isFavorite === true);
 
   function handleAddEntry(event) {
     event.preventDefault();
@@ -63,10 +63,6 @@ export default function App() {
     setEntries([newEntry, ...entries]);
     form.reset();
     form.motto.focus();
-  }
-
-  function handleTabClick() {
-    console.log("tab clicked");
   }
 
   function handleToggleFavorite(favEntryId) {
@@ -90,14 +86,10 @@ export default function App() {
           <Button type="submit" text="Create" />
         </EntryForm>
         <EntriesSection>
-          <TabBar>
-            <Tab text="All Entries" onClick={handleTabClick}>
-              <Badge isActive="true" numberOfEntries="3" />
-            </Tab>
-            <Tab text="Favorites">
-              <Badge isActive="false" numberOfEntries="1" />
-            </Tab>
-          </TabBar>
+          <TabBar
+            numberOfAllEntries={entries.length}
+            numberOfFavoriteEntries={favoriteEntries.length}
+          />
           <EntryList>
             {entries.map((entry) => {
               return (

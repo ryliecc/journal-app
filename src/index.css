@@ -1,6 +1,5 @@
 @import url("./global.css");
 @import url("./App.css");
-@import url("./components/Badge.css");
 @import url("./components/Button.css");
 @import url("./components/EntriesSection.css");
 @import url("./components/EntryForm.css");
@@ -10,6 +9,5 @@
 @import url("./components/FavoriteButton.css");
 @import url("./components/Input.css");
 @import url("./components/Main.css");
-@import url("./components/Tab.css");
 @import url("./components/TabBar.css");
 @import url("./components/Textarea.css");
