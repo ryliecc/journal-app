@@ -60,12 +60,12 @@ export default function App() {
       notes: form.elements.notes.value,
       isFavorite: false,
     };
-    setEntries([...entries, newEntry]);
+    setEntries([newEntry, ...entries]);
     form.reset();
     form.motto.focus();
   }
 
-  function handleFavorite(favEntryId) {
+  function handleToggleFavorite(favEntryId) {
     const updatedEntries = entries.map((entry) => {
       if (entry.id === favEntryId) {
         return { ...entry, isFavorite: !entry.isFavorite };
@@ -81,8 +81,8 @@ export default function App() {
       <Header title="Journal" />
       <Main>
         <EntryForm title="New Entry" onAddEntry={handleAddEntry}>
-          <Input id="entry-form__motto" labelText="Motto" type="text" />
-          <Textarea id="entry-form__notes" labelText="Notes" rowNumber="3" />
+          <Input id="motto" labelText="Motto" type="text" />
+          <Textarea id="notes" labelText="Notes" rowNumber="3" />
           <Button type="submit" text="Create" />
         </EntryForm>
         <EntriesSection>
@@ -104,7 +104,7 @@ export default function App() {
                   notes={entry.notes}
                 >
                   <FavoriteButton
-                    onClick={handleFavorite}
+                    onClick={handleToggleFavorite}
                     isFavorite={entry.isFavorite}
                     entryId={entry.id}
                   />
