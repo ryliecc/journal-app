@@ -1,8 +1,8 @@
-export default function Tab({ text, children }) {
+export default function Tab({ onClick, text, children }) {
   return (
-    <p className="entries-section__tab">
+    <button type="button" onClick="onClick" className="entries-section__tab">
       {text}
       {children}
-    </p>
+    </button>
   );
 }

@@ -65,6 +65,10 @@ export default function App() {
     form.motto.focus();
   }
 
+  function handleTabClick() {
+    console.log("tab clicked");
+  }
+
   function handleToggleFavorite(favEntryId) {
     const updatedEntries = entries.map((entry) => {
       if (entry.id === favEntryId) {
@@ -87,7 +91,7 @@ export default function App() {
         </EntryForm>
         <EntriesSection>
           <TabBar>
-            <Tab text="All Entries">
+            <Tab text="All Entries" onClick={handleTabClick}>
               <Badge isActive="true" numberOfEntries="3" />
             </Tab>
             <Tab text="Favorites">
