@@ -1,0 +1,7 @@
+.footer {
+  background-color: var(--color-granite);
+}
+
+.footer__text {
+  background-color: transparent;
+}
