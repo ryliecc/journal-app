@@ -13,6 +13,7 @@ import TabBar from "./components/TabBar";
 import Textarea from "./components/Textarea";
 
 export default function App() {
+  const [entryFilter, setEntryFilter] = useState("all");
   const initialEntries = [
     {
       id: 1000,
@@ -46,14 +47,21 @@ export default function App() {
       isFavorite: false,
     },
   ];
-  const [filter, setFilter] = useState("all");
-  const [allEntries, setAllEntries] = useLocalStorageState(
-    "allEntries",
-    initialEntries
-  );
+  const [allEntries, setAllEntries] = useLocalStorageState("allEntries", []);
+  if (allEntries == null) {
+    setAllEntries(initialEntries);
+  }
   const favoriteEntries = allEntries.filter(
     (entry) => entry.isFavorite === true
   );
+  let displayedEntries;
+
+  if (entryFilter === "all") {
+    displayedEntries = allEntries;
+  }
+  if (entryFilter === "favorite") {
+    displayedEntries = favoriteEntries;
+  }
 
   function handleAddEntry(event) {
     event.preventDefault();
@@ -71,18 +79,11 @@ export default function App() {
   }
 
   function showAllEntries() {
-    setFilter("all");
+    setEntryFilter("all");
   }
 
   function showFavoriteEntries() {
-    setFilter("favorite");
-  }
-
-  function showUpdatedEntries() {
-    if (filter === "favorite") {
-      return favoriteEntries;
-    }
-    return allEntries;
+    setEntryFilter("favorite");
   }
 
   function handleToggleFavorite(favEntryId) {
@@ -110,10 +111,10 @@ export default function App() {
             onShowAllEntries={showAllEntries}
             numberOfFavoriteEntries={favoriteEntries.length}
             onShowFavoriteEntries={showFavoriteEntries}
-            filter={filter}
+            entryFilter={entryFilter}
           />
           <EntryList
-            entries={showUpdatedEntries()}
+            entries={displayedEntries}
             onToggleFavorite={handleToggleFavorite}
           />
         </EntriesSection>

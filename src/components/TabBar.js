@@ -3,17 +3,20 @@ export default function TabBar({
   numberOfAllEntries,
   onShowFavoriteEntries,
   numberOfFavoriteEntries,
-  filter,
+  entryFilter,
 }) {
   let allClass;
   let favClass;
-  if (filter === "favorite") {
+
+  if (entryFilter === "favorite") {
     allClass = "tab__badge";
     favClass = "tab__badge tab__badge--active";
-  } else {
+  }
+  if (entryFilter === "all") {
     allClass = "tab__badge tab__badge--active";
     favClass = "tab__badge";
   }
+
   return (
     <div className="entries-section__tab-bar">
       <button
